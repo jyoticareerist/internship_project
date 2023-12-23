@@ -12,7 +12,7 @@ class ProductDetailsPage(Page):
 
     def verify_visualization_options(self):
         self.verify_partial_url('project/general?projectid=')
-        sleep(5)
+        self.wait_until_all_elements_present(*self.VISUALIZATION_TABS)
         tab_options = []
         visualization_tabs = self.find_elements(*self.VISUALIZATION_TABS)
         for tab in visualization_tabs:

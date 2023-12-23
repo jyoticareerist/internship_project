@@ -59,4 +59,9 @@ class Page:
         logger.info(f'Searching for elements {locator}')
         return self.driver.find_elements(*locator)
 
-
+    def wait_until_all_elements_present(self, *locator):
+        logger.info(f'{locator} wait until all elements present')
+        self.wait.until(
+            EC.presence_of_all_elements_located(locator),
+            f"{locator} not present!"
+        )
