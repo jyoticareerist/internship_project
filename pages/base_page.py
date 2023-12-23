@@ -47,14 +47,6 @@ class Page:
         self.driver.find_element(*locator).click()
         logger.info(f'Clicking the element: {locator}')
 
-    def wait_until_click(self, *locator):
-        logger.info(f'Wait and click the element: {locator}')
-        self.wait.until(
-            EC.element_to_be_clickable(locator),
-            f'{locator} not clickable!'
-        )
-        self.click(*locator)
-
     def input(self, text, *locator):
         logger.info(f'Input {text} in element {locator}')
         self.driver.find_element(*locator).send_keys(text)
