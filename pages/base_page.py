@@ -23,6 +23,7 @@ class Page:
             EC.url_to_be(expected_url),
             message=f'Expected URL({expected_url}) does not match the Actual URL({current_url})'
         )
+        logger.info(f"Current URL: {self.get_current_url()}")
 
     def verify_partial_url(self, expected_url):
         current_url = self.get_current_url()
@@ -45,6 +46,14 @@ class Page:
     def click(self, *locator):
         self.driver.find_element(*locator).click()
         logger.info(f'Clicking the element: {locator}')
+
+    def wait_until_click(self, *locator):
+        logger.info(f'Wait and click the element: {locator}')
+        self.wait.until(
+            EC.element_to_be_clickable(locator),
+            f'{locator} not clickable!'
+        )
+        self.click(*locator)
 
     def input(self, text, *locator):
         logger.info(f'Input {text} in element {locator}')
