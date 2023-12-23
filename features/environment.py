@@ -9,11 +9,39 @@ def browser_init(context):
     """
     :param context: Behave context
     """
-    driver_path = ChromeDriverManager().install()
-    service = Service(driver_path)
-    context.driver = webdriver.Chrome(service=service)
+    # driver_path = ChromeDriverManager().install()
+    # service = Service(driver_path)
+    # context.driver = webdriver.Chrome(service=service)
 
-    context.driver.maximize_window()
+    ## OTHER BROWSERS ###
+    service = Service(executable_path='/Users/jyotiugale/Documents/joe/git/internship_project/geckodriver')
+    context.driver = webdriver.Firefox(service=service)
+    # context.driver = webdriver.Safari()
+
+    ### HEADLESS MODE ####
+    # options = webdriver.ChromeOptions()
+    # options.add_argument('headless')
+    # service = Service(ChromeDriverManager().install())
+    # context.driver = webdriver.Chrome(
+    #     options=options,
+    #     service=service
+    # )
+
+    ### BROWSERSTACK ###
+    # Register for BrowserStack, then grab it from https://www.browserstack.com/accounts/settings
+    # bs_user = 'kunalugale_sr61cO'
+    # bs_key = 'p5VxDZxei68NT9WS8Kpx'
+    # url = f'http://{bs_user}:{bs_key}@hub-cloud.browserstack.com/wd/hub'
+    #
+    # options = Options()
+    # bstack_options = {
+    #     'os': 'Windows',
+    #     'osVersion': '10',
+    #     'browserName': 'Firefox',
+    #     'sessionName': scenario_name
+    # }
+    # options.set_capability('bstack:options', bstack_options)
+    # context.driver = webdriver.Remote(command_executor=url, options=options)
 
     context.driver.maximize_window()
 

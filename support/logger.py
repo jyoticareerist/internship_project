@@ -7,7 +7,7 @@ logger.setLevel(logging.DEBUG)
 
 # FileHandler is an object that defines how log messages should be written to a file
 # Create a file handler that will write log messages to a file named 'test_automation.log'
-handler = logging.FileHandler('/Users/jyotiugale/Desktop/Internship_Automation/support/test_automation.log')
+handler = logging.FileHandler('/Users/jyotiugale/Documents/joe/git/internship_project/support/test_automation.log')
 handler.setLevel(logging.DEBUG)
 
 # Define the format for log messages, including timestamp, logger name, log level, and the actual message

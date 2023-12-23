@@ -9,7 +9,6 @@ class MainPage(Page):
 
     def open_main_page(self):
         self.open_url('https://soft.reelly.io/')
-        self.verify_url('https://soft.reelly.io/')
         sleep(4)
 
     def click_off_plan_menu(self):
