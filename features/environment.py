@@ -11,9 +11,9 @@ def browser_init(context, scenario_name):
     :param scenario_name: Scenario Name
     :param context: Behave context
     """
-    # driver_path = ChromeDriverManager().install()
-    # service = Service(driver_path)
-    # context.driver = webdriver.Chrome(service=service)
+    driver_path = ChromeDriverManager().install()
+    service = Service(driver_path)
+    context.driver = webdriver.Chrome(service=service)
 
     ## OTHER BROWSERS ###
     # service = Service(executable_path='/Users/jyotiugale/Documents/joe/git/internship_project/geckodriver')
@@ -21,22 +21,21 @@ def browser_init(context, scenario_name):
     # context.driver = webdriver.Safari()
 
     ### HEADLESS MODE ####
-    options = webdriver.ChromeOptions()
-    options.add_argument("--window-size=1920,1080")
-    options.add_argument("--start-maximized")
-    options.add_argument('headless')
-    service = Service(ChromeDriverManager().install())
-    context.driver = webdriver.Chrome(
-        options=options,
-        service=service
-    )
+    # options = webdriver.ChromeOptions()
+    # options.add_argument("--window-size=1920,1080")
+    # options.add_argument("--start-maximized")
+    # options.add_argument('headless')
+    # service = Service(ChromeDriverManager().install())
+    # context.driver = webdriver.Chrome(
+    #     options=options,
+    #     service=service
+    # )
 
     ### BROWSERSTACK ###
     # Register for BrowserStack, then grab it from https://www.browserstack.com/accounts/settings
     # bs_user = 'kunalugale_sr61cO'
     # bs_key = 'p5VxDZxei68NT9WS8Kpx'
     # url = f'http://{bs_user}:{bs_key}@hub-cloud.browserstack.com/wd/hub'
-    #
     # options = Options()
     # bstack_options = {
     #     'os': 'Windows',
@@ -47,6 +46,7 @@ def browser_init(context, scenario_name):
     # options.set_capability('bstack:options', bstack_options)
     # context.driver = webdriver.Remote(command_executor=url, options=options)
 
+    context.driver.maximize_window()
     context.driver.maximize_window()
 
     context.driver.implicitly_wait(6)
