@@ -27,6 +27,9 @@ class ProductDetailsPage(Page):
         visualization_tabs = self.find_elements(*self.VISUALIZATION_TABS)
         for tab in visualization_tabs:
             tab_text = tab.find_element(By.CSS_SELECTOR, 'div div').text
+            if not tab_text:
+                tab_text = tab.find_element(By.CSS_SELECTOR, 'div').text
+            print(f'Tab text: {tab_text}')
             tab.click()
             selected_tab_text = self.find_element(*self.SELECTED_TAB).find_element(By.CSS_SELECTOR, 'div div').text
             self.verify_exact_match(tab_text, selected_tab_text)
