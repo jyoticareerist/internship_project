@@ -33,24 +33,25 @@ def browser_init(context, scenario_name):
 
     ### BROWSERSTACK ###
     # Register for BrowserStack, then grab it from https://www.browserstack.com/accounts/settings
-    # bs_user = 'kunalugale_sr61cO'
-    # bs_key = 'p5VxDZxei68NT9WS8Kpx'
-    # url = f'http://{bs_user}:{bs_key}@hub-cloud.browserstack.com/wd/hub'
-    # options = Options()
-    # bstack_options = {
-    #     'os': 'Windows',
-    #     'osVersion': '10',
-    #     'browserName': 'Firefox',
-    #     'sessionName': scenario_name
-    # }
-    # options.set_capability('bstack:options', bstack_options)
-    # context.driver = webdriver.Remote(command_executor=url, options=options)
+    bs_user = 'kunalugale_sr61cO'
+    bs_key = 'p5VxDZxei68NT9WS8Kpx'
+    url = f'http://{bs_user}:{bs_key}@hub-cloud.browserstack.com/wd/hub'
+    options = Options()
+    bstack_options = {
+        'deviceName': 'Samsung Galaxy S22',
+        'osVersion': '13.0',
+        'browserName': 'chrome',
+        'deviceOrientation': 'portrait',
+        'sessionName': scenario_name
+    }
+    options.set_capability('bstack:options', bstack_options)
+    context.driver = webdriver.Remote(command_executor=url, options=options)
 
     ### MOBILE EMULATION ###
-    mobile_emulation = {"deviceName": "iPhone 12 Pro"}
-    chrome_options = webdriver.ChromeOptions()
-    chrome_options.add_experimental_option("mobileEmulation", mobile_emulation)
-    context.driver = webdriver.Chrome(options=chrome_options)
+    # mobile_emulation = {"deviceName": "iPhone 12 Pro"}
+    # chrome_options = webdriver.ChromeOptions()
+    # chrome_options.add_experimental_option("mobileEmulation", mobile_emulation)
+    # context.driver = webdriver.Chrome(options=chrome_options)
 
     context.driver.maximize_window()
     context.driver.maximize_window()
